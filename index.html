@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        .user1 {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-start;
+        }
+
+        .user2 {
+            background-color: #ffffff;
+            color: black;
+            align-self: flex-end;
+            text-align: right;
+            border: 1px solid #ccc;
+        }
+
+        .input-container {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-container button {
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="message user1">
+            <p>Salut, Marame ?</p>
+        </div>
+        <div class="message user2">
+            <p>Ça va bien, merci ! Et toi ?</p>
+        </div>
+        <div class="message user1">
+            <p>Je vais bien aussi, merci de demander.</p>
+        </div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Écris un message...">
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const messageText = input.value;
+            if (messageText.trim() !== '') {
+                const messageContainer = document.createElement('div');
+                messageContainer.classList.add('message', 'user1');
+                messageContainer.innerHTML = `<p>${messageText}</p>`;
+                document.querySelector('.chat-container').insertBefore(messageContainer, document.querySelector('.input-container'));
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
